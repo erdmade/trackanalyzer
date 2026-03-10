@@ -5,12 +5,11 @@ from datetime import datetime
 class TrackPoint:
     latitude: float
     longitude: float
-    elevation: float
-    time: datetime
+    elevation: float | None
+    time: datetime | None
 
 @dataclass
 class Track:
     name: str
     points: list[TrackPoint]
 
-    

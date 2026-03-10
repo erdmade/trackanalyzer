@@ -1,10 +1,16 @@
 import sys
 import argparse
+import logging
 from trackanalyzer.core.parsing import load_kml
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s"
+)
+
+logger = logging.getLogger(__name__)
+
 def main():
-    print("main() started")
-    print (sys.executable)
 
     parser = argparse.ArgumentParser(
         description="Track Analyzer - load a KML file and view track on a map."
@@ -21,8 +27,6 @@ def main():
 
     try:
         track = load_kml(args.file)
-
-        print ("File loaded successfully!")
 
     except FileNotFoundError:
         print(f"Error: File {args.file} not found.")
